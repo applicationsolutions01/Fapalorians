@@ -1,0 +1,4154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Fapalorians</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+    :root {
+        --primary-dark: #0c3912;
+        --primary-green: #145a32;
+        --accent-gold: #ffd700;
+        --accent-red: #d62828;
+        --accent-silver: #e8e8e8;
+        --light-green: #2e8b57;
+        --dark-bg: #0a1a0a;
+        --card-bg: rgba(20, 40, 20, 0.9);
+        --text-light: #f8f9fa;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    /* Advanced Snow Animation */
+    .snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .snowflake {
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: fall linear infinite;
+        filter: blur(1px);
+    }
+
+    .snowflake:nth-child(odd) {
+        background: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
+    }
+
+    .snowflake:nth-child(even) {
+        background: linear-gradient(135deg, #f0f8ff 0%, #d1ecff 100%);
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-10px) translateX(0) rotate(0deg);
+            opacity: 0.9;
+        }
+
+        100% {
+            transform: translateY(100vh) translateX(20px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Christmas Trees */
+    .christmas-tree {
+        position: fixed;
+        z-index: 2;
+        pointer-events: none;
+        opacity: 0.7;
+    }
+
+    .tree-left {
+        bottom: 0;
+        left: 2%;
+        width: 120px;
+        height: 180px;
+        background: linear-gradient(to bottom, #145a32 0%, #0c3912 100%);
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    .tree-left:before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 30px;
+        background: #d62828;
+        border-radius: 50%;
+    }
+
+    .tree-left:after {
+        content: "✨";
+        position: absolute;
+        top: 40px;
+        left: 30px;
+        font-size: 20px;
+        animation: twinkle 2s infinite alternate;
+    }
+
+    .tree-right {
+        bottom: 0;
+        right: 3%;
+        width: 150px;
+        height: 200px;
+        background: linear-gradient(to bottom, #1a6b3c 0%, #0c3912 100%);
+        clip-path: polygon(50% 0%,
+                30% 30%,
+                0% 50%,
+                30% 70%,
+                10% 100%,
+                50% 85%,
+                90% 100%,
+                70% 70%,
+                100% 50%,
+                70% 30%);
+    }
+
+    .tree-right:before {
+        content: "";
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25px;
+        height: 25px;
+        background: #ffd700;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+    }
+
+    /* Floating Christmas Balls */
+    .christmas-ball {
+        position: fixed;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        z-index: 2;
+        pointer-events: none;
+        animation: floatBall 6s ease-in-out infinite;
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .ball-1 {
+        top: 15%;
+        left: 10%;
+        background: radial-gradient(circle at 30% 30%, #ff3333, #cc0000);
+        animation-delay: 0s;
+    }
+
+    .ball-2 {
+        top: 25%;
+        right: 15%;
+        background: radial-gradient(circle at 30% 30%, #33cc33, #009900);
+        animation-delay: 1s;
+    }
+
+    .ball-3 {
+        top: 60%;
+        left: 5%;
+        background: radial-gradient(circle at 30% 30%, #ffff33, #cccc00);
+        animation-delay: 2s;
+    }
+
+    .ball-4 {
+        top: 70%;
+        right: 8%;
+        background: radial-gradient(circle at 30% 30%, #ff66ff, #cc00cc);
+        animation-delay: 3s;
+    }
+
+    @keyframes floatBall {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-30px) rotate(180deg);
+        }
+    }
+
+    @keyframes twinkle {
+        0% {
+            opacity: 0.3;
+            transform: scale(0.8);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+    }
+
+    /* Modern Header */
+    header {
+        padding: 2rem 5%;
+        position: relative;
+        z-index: 100;
+        text-align: center;
+        background: rgba(10, 26, 10, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        gap: 1.5rem;
+    }
+
+    .logo-icon {
+        font-size: 3.5rem;
+        color: var(--accent-gold);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from {
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        to {
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+        }
+    }
+
+    .logo-text h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.5rem;
+        background: linear-gradient(to right,
+                var(--accent-gold),
+                #ffa500,
+                var(--accent-red));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-text p {
+        font-size: 1.2rem;
+        color: var(--accent-silver);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-top: 0.5rem;
+        font-weight: 300;
+    }
+
+    /* Full Width Image Section */
+    .image-section {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+        margin-bottom: 4rem;
+        border-radius: 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .image-section_02 {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+        margin-bottom: 4rem;
+        border-radius: 0;
+        /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); */
+    }
+
+    .image-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .christmas-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.8) contrast(1.1);
+        transition: transform 10s ease;
+    }
+
+    .image-section:hover .christmas-image {
+        transform: scale(1.1);
+    }
+
+    .creta-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.8) contrast(1.1);
+        transition: transform 10s ease;
+    }
+
+    .image-section:hover .creta-image {
+        transform: scale(1.1);
+    }
+
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom,
+                rgba(10, 26, 10, 0.7) 0%,
+                rgba(10, 26, 10, 0.4) 50%,
+                rgba(10, 26, 10, 0.8) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .image-overlay_02 {
+        position: absolute;
+        background: linear-gradient(to bottom,
+                rgba(10, 26, 10, 0.7) 0%,
+                rgba(10, 26, 10, 0.4) 50%,
+                rgba(10, 26, 10, 0.8) 100%);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+        text-align: top;
+        padding: 2rem;
+    }
+
+    .image-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 4rem;
+        color: var(--accent-gold);
+        margin-bottom: 1rem;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+        0% {
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+                0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        100% {
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+                0 0 25px rgba(255, 215, 0, 0.7);
+        }
+    }
+
+    .image-subtitle {
+        font-size: 1.8rem;
+        color: var(--accent-silver);
+        max-width: 800px;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        font-weight: 300;
+    }
+
+    .image-ornaments {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .image-ornament {
+        font-size: 2rem;
+        color: var(--accent-gold);
+        animation: ornamentFloat 4s ease-in-out infinite;
+    }
+
+    .image-ornament:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .image-ornament:nth-child(2) {
+        animation-delay: 1s;
+    }
+
+    .image-ornament:nth-child(3) {
+        animation-delay: 2s;
+    }
+
+    .image-ornament:nth-child(4) {
+        animation-delay: 3s;
+    }
+
+    @keyframes ornamentFloat {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-15px) rotate(10deg);
+        }
+    }
+
+    /* Main Container */
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+        min-height: calc(100vh - 300px);
+        /* Space for footer */
+    }
+
+    /* Section Title */
+    .section-title {
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.5rem;
+        color: var(--accent-gold);
+        margin: 3rem 0 4rem;
+        position: relative;
+        padding: 1rem 0;
+    }
+
+    .section-title:before,
+    .section-title:after {
+        content: "🎄";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2.5rem;
+        animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        100% {
+            transform: translateY(-50%) rotate(360deg);
+        }
+    }
+
+    .section-title:before {
+        left: 20%;
+    }
+
+    .section-title:after {
+        right: 20%;
+    }
+
+    /* Modern Character Cards */
+    .characters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-bottom: 6rem;
+    }
+
+    .character-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid transparent;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .character-icon {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        border: 4px solid var(--accent-gold);
+        box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    .character-icon img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .character-icon img.primary-photo {
+        z-index: 2;
+        transform: scale(1);
+        opacity: 1;
+        filter: brightness(0.95) contrast(1.1);
+    }
+
+    .character-icon img.hover-photo {
+        z-index: 1;
+        transform: scale(1.1);
+        opacity: 0;
+        filter: brightness(1.05) contrast(1.2);
+    }
+
+    .character-card:hover .character-icon {
+        transform: scale(1.1);
+        border-color: var(--accent-red);
+        box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5),
+            0 0 30px rgba(214, 40, 40, 0.3);
+    }
+
+    .character-card:hover .character-icon img.primary-photo {
+        opacity: 0;
+        transform: scale(1.1) rotate(-10deg);
+        filter: blur(2px);
+    }
+
+    .character-card:hover .character-icon img.hover-photo {
+        opacity: 1;
+        transform: scale(1.05) rotate(0deg);
+        filter: brightness(1) contrast(1.1) blur(0);
+    }
+
+    .character-icon:before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border-radius: 50%;
+        background: linear-gradient(45deg,
+                var(--accent-gold),
+                var(--accent-red),
+                var(--accent-gold));
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .character-card:hover .character-icon:before {
+        opacity: 1;
+        animation: rotateGradient 3s linear infinite;
+    }
+
+    @keyframes rotateGradient {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .character-icon:after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 45%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0.1) 55%,
+                rgba(255, 255, 255, 0) 100%);
+        transform: rotate(30deg);
+        z-index: 3;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .character-card:hover .character-icon:after {
+        opacity: 1;
+        animation: photoShine 1.5s ease;
+    }
+
+    @keyframes photoShine {
+        0% {
+            left: -50%;
+            top: -50%;
+        }
+
+        100% {
+            left: 150%;
+            top: 150%;
+        }
+    }
+
+    /* Character Icons Hover */
+    .character-powers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .power-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.7rem;
+        border-radius: 10px;
+        background: rgba(20, 40, 20, 0.5);
+        border: 1px solid rgba(255, 215, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        min-height: 70px;
+    }
+
+    .power-item:hover {
+        background: rgba(30, 50, 30, 0.7);
+        border-color: var(--accent-gold);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .power-icon {
+        flex-shrink: 0;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: rgba(255, 215, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .power-item:hover .power-icon {
+        background: rgba(255, 215, 0, 0.25);
+        border-color: var(--accent-gold);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        transform: scale(1.1);
+    }
+
+    .power-icon i {
+        font-size: 1.3rem;
+        color: var(--accent-gold);
+        transition: all 0.3s ease;
+    }
+
+    .power-item:hover .power-icon i {
+        color: var(--accent-red);
+    }
+
+    .power-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    .power-label {
+        font-size: 0.9rem;
+        color: var(--accent-gold);
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    .power-description {
+        font-size: 0.75rem;
+        color: var(--accent-silver);
+        line-height: 1.3;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .power-item:hover .power-description {
+        opacity: 1;
+        color: #fff;
+    }
+
+    /* Power Tooltip (Hover Text) */
+    .power-tooltip {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: rgba(10, 30, 10, 0.95);
+        color: var(--accent-gold);
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        width: 100%;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid var(--accent-gold);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        max-width: 200px;
+        text-align: center;
+    }
+
+    .power-tooltip:after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: var(--accent-gold);
+    }
+
+    .power-item:hover .power-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-5px);
+    }
+
+    /* Author Section */
+    .author-section {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 215, 0, 0.2);
+        position: relative;
+    }
+
+    .by-text {
+        font-size: 1.2rem;
+        color: var(--accent-silver);
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        opacity: 0.8;
+    }
+
+    .by-text span {
+        color: var(--accent-gold);
+        font-weight: 600;
+    }
+
+    /* Optional: Add to card for spacing */
+    .character-card {
+        padding-bottom: 3rem;
+        min-height: 520px;
+        /* Adjust based on your needs */
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .author-image-container {
+            width: 80px;
+            height: 80px;
+        }
+
+        .by-text {
+            font-size: 1rem;
+        }
+
+        .author-info {
+            top: -60px;
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem;
+            min-width: 180px;
+        }
+
+        .author-name {
+            font-size: 1.1rem;
+        }
+
+        .character-card {
+            min-height: 500px;
+        }
+    }
+
+    /* Alternative: Remove tooltip and show always */
+    /* .power-tooltip {
+    display: none;
+} */
+
+    /* Adjust card for 2-column layout */
+    .character-card {
+        padding-bottom: 2rem;
+        min-height: 480px;
+    }
+
+    .character-card .character-name {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .character-powers {
+            gap: 0.8rem;
+        }
+
+        .power-item {
+            padding: 0.6rem;
+            min-height: 65px;
+            gap: 0.6rem;
+        }
+
+        .power-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .power-icon i {
+            font-size: 1.1rem;
+        }
+
+        .power-label {
+            font-size: 0.85rem;
+        }
+
+        .power-description {
+            font-size: 0.7rem;
+        }
+
+        .power-tooltip {
+            font-size: 0.8rem;
+            padding: 0.6rem 0.8rem;
+            white-space: normal;
+            width: 150px;
+            top: -80px;
+        }
+    }
+
+    .character-card:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg,
+                var(--accent-red),
+                var(--accent-gold),
+                var(--light-green));
+        z-index: 1;
+    }
+
+    .character-icon {
+        font-size: 4.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        transition: all 0.5s ease;
+        position: relative;
+    }
+
+    .character-card:hover .character-icon {
+        transform: scale(1.2) rotate(10deg);
+    }
+
+    .character-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.2rem;
+        color: var(--accent-gold);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .character-name:after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 20%;
+        width: 60%;
+        height: 3px;
+        background: var(--accent-red);
+        border-radius: 2px;
+        transition: width 0.3s ease;
+    }
+
+    .character-card:hover .character-name:after {
+        width: 80%;
+    }
+
+    .character-description {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        color: var(--accent-silver);
+        margin-top: 1rem;
+        flex-grow: 1;
+    }
+
+    /* Other Sections */
+
+    /* Polaroid Photo Sections */
+    .photos-section {
+        margin: 4rem 0 6rem;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .section-header h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        color: var(--accent-gold);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-header h3:after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 25%;
+        width: 50%;
+        height: 3px;
+        background: linear-gradient(90deg,
+                transparent,
+                var(--accent-red),
+                transparent);
+        border-radius: 2px;
+    }
+
+    .section-header p {
+        font-size: 1.2rem;
+        color: var(--accent-silver);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .polaroid-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        padding: 2rem;
+    }
+
+    .polaroid-card {
+        background: rgb(248, 250, 234);
+        padding: 1.5rem 1.5rem 4rem;
+        border-radius: 4px;
+        position: relative;
+        transform: rotate(var(--rotate-angle, 0deg));
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .polaroid-card:hover {
+        transform: rotate(0deg) scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    .polaroid-card:nth-child(odd) {
+        --rotate-angle: -2deg;
+    }
+
+    .polaroid-card:nth-child(even) {
+        --rotate-angle: 2deg;
+    }
+
+    .polaroid-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 2px;
+        margin-bottom: 1rem;
+        transition: all 0.4s ease;
+        filter: sepia(0.2) contrast(1.1);
+    }
+
+    .polaroid-image_01 {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 2px;
+        margin-bottom: 1rem;
+        transition: all 0.4s ease;
+        filter: sepia(0.2) contrast(1.1);
+    }
+
+    .polaroid-card:hover .polaroid-image {
+        filter: sepia(0) contrast(1.2) brightness(1.1);
+        transform: scale(1.02);
+    }
+
+    .polaroid-date {
+        position: absolute;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.3rem;
+        color: #333;
+        font-weight: 800;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+    }
+
+    .polaroid-card:hover .polaroid-date {
+        color: var(--accent-red);
+        transform: scale(1.1);
+    }
+
+    .polaroid-ornament {
+        position: absolute;
+        font-size: 1.5rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .polaroid-card:hover .polaroid-ornament {
+        opacity: 1;
+        animation: ornamentFloat 2s ease-in-out infinite;
+    }
+
+    .ornament-tl {
+        top: -10px;
+        left: -10px;
+    }
+
+    .ornament-tr {
+        top: -10px;
+        right: -10px;
+        animation-delay: 0.5s !important;
+    }
+
+    .ornament-bl {
+        bottom: 30px;
+        left: -10px;
+        animation-delay: 1s !important;
+    }
+
+    .ornament-br {
+        bottom: 30px;
+        right: -10px;
+        animation-delay: 1.5s !important;
+    }
+
+    /* Photo counter */
+    .photo-counter {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: var(--accent-red);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        z-index: 2;
+        box-shadow: 0 4px 10px rgba(214, 40, 40, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .polaroid-card:hover .photo-counter {
+        transform: scale(1.2) rotate(15deg);
+        box-shadow: 0 6px 15px rgba(214, 40, 40, 0.5);
+    }
+
+    /* Simple Subsection */
+    .sub-section {
+        margin: 3rem 0;
+        text-align: center;
+        position: relative;
+    }
+
+    .sub-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.5rem;
+        color: var(--accent-gold);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+        padding: 0 2rem;
+    }
+
+    /* Decorative Line */
+    .decorative-line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem auto;
+        max-width: 400px;
+    }
+
+    .decorative-line:before,
+    .decorative-line:after {
+        content: "";
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(90deg,
+                transparent,
+                var(--accent-gold),
+                transparent);
+    }
+
+    .line-ornament {
+        margin: 0 1rem;
+        font-size: 1.5rem;
+        color: var(--accent-gold);
+    }
+
+    /* Simple HR */
+    .simple-hr {
+        width: 150px;
+        height: 3px;
+        background: var(--accent-red);
+        border: none;
+        margin: 1.5rem auto;
+        border-radius: 2px;
+        position: relative;
+    }
+
+    .simple-hr:before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 10px;
+        background: var(--accent-gold);
+        border-radius: 50%;
+    }
+
+    /* Footer */
+    .footer {
+        background: linear-gradient(to bottom,
+                rgba(10, 30, 10, 0.95),
+                rgba(5, 20, 5, 0.98));
+        padding: 4rem 5% 2rem;
+        position: relative;
+        z-index: 10;
+        border-top: 3px solid var(--accent-red);
+        margin-top: 3rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .footer-section {
+        padding: 1rem;
+    }
+
+    .footer-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.8rem;
+        color: var(--accent-gold);
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .footer-title:after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--accent-red);
+        border-radius: 2px;
+    }
+
+    .footer-text {
+        color: var(--accent-silver);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .footer-links {
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+        color: var(--accent-silver);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent-gold);
+        transform: translateX(10px);
+    }
+
+    .footer-links i {
+        color: var(--accent-red);
+        font-size: 1rem;
+    }
+
+    /* Countdown Section */
+    .countdown-section {
+        text-align: center;
+        background: rgba(20, 40, 20, 0.6);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .countdown-title {
+        font-size: 1.5rem;
+        color: var(--accent-gold);
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .countdown-container {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 80px;
+    }
+
+    .countdown-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--accent-gold);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .countdown-label {
+        font-size: 0.9rem;
+        color: var(--accent-silver);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .countdown-message {
+        font-size: 1.2rem;
+        color: var(--accent-silver);
+        font-style: italic;
+        margin-top: 1rem;
+    }
+
+    .countdown-message i {
+        color: var(--accent-red);
+        margin: 0 0.5rem;
+    }
+
+    /* Social Icons */
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 215, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-gold);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .social-icon:hover {
+        background: var(--accent-gold);
+        color: var(--primary-dark);
+        transform: translateY(-5px);
+        border-color: var(--accent-red);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--accent-silver);
+        font-size: 1rem;
+    }
+
+    .footer-signature {
+        font-size: 1.1rem;
+        color: var(--accent-gold);
+        margin-top: 1rem;
+        font-weight: 600;
+    }
+
+    .footer-signature span {
+        color: var(--accent-red);
+    }
+
+    /* Christmas Footer Ornaments */
+    .footer-ornament {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        z-index: 1;
+        opacity: 0.6;
+    }
+
+    .orn-1 {
+        top: -15px;
+        left: 10%;
+        background: radial-gradient(circle at 30% 30%, #ff3333, #990000);
+    }
+
+    .orn-2 {
+        top: -15px;
+        right: 15%;
+        background: radial-gradient(circle at 30% 30%, #33cc33, #006600);
+    }
+
+    .orn-3 {
+        bottom: 20px;
+        left: 5%;
+        background: radial-gradient(circle at 30% 30%, #ffff00, #996600);
+    }
+
+    .orn-4 {
+        bottom: 20px;
+        right: 8%;
+        background: radial-gradient(circle at 30% 30%, #ff66ff, #660066);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .polaroid-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .section-header h3 {
+            font-size: 2rem;
+        }
+
+        .polaroid-date {
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .characters-grid {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+
+        .section-title:before {
+            left: 15%;
+        }
+
+        .section-title:after {
+            right: 15%;
+        }
+
+        .countdown-container {
+            gap: 1rem;
+        }
+
+        .countdown-item {
+            min-width: 70px;
+        }
+
+        .image-title {
+            font-size: 3.5rem;
+        }
+
+        .image-subtitle {
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .logo-text h1 {
+            font-size: 2.8rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+        }
+
+        .tree-left,
+        .tree-right {
+            opacity: 0.5;
+        }
+
+        .footer-content {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .image-title {
+            font-size: 3rem;
+        }
+
+        .image-subtitle {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .logo {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .logo-text h1 {
+            font-size: 2.4rem;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+        }
+
+        .section-title:before,
+        .section-title:after {
+            display: none;
+        }
+
+        .characters-grid {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .character-card {
+            padding: 2rem;
+            min-height: 380px;
+        }
+
+        .tree-left,
+        .tree-right {
+            display: none;
+        }
+
+        .footer-content {
+            grid-template-columns: 1fr;
+        }
+
+        .countdown-container {
+            gap: 0.8rem;
+        }
+
+        .countdown-item {
+            min-width: 60px;
+        }
+
+        .countdown-value {
+            font-size: 2rem;
+        }
+
+        .image-section {
+            height: 60vh;
+        }
+
+        .image-title {
+            font-size: 2.5rem;
+        }
+
+        .image-subtitle {
+            font-size: 1.2rem;
+            padding: 0 1rem;
+        }
+
+        .image-ornaments {
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .logo-text h1 {
+            font-size: 2rem;
+        }
+
+        .logo-text p {
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .characters-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .character-name {
+            font-size: 1.8rem;
+        }
+
+        .character-description {
+            font-size: 1.1rem;
+        }
+
+        .countdown-container {
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .countdown-item {
+            min-width: 70px;
+        }
+
+        .image-section {
+            height: 50vh;
+        }
+
+        .image-title {
+            font-size: 2rem;
+        }
+
+        .image-subtitle {
+            font-size: 1rem;
+        }
+
+        .image-ornaments {
+            gap: 1rem;
+        }
+
+        .image-ornament {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* Sparkle effect for balls */
+    .christmas-ball {
+        animation: floatBall 6s ease-in-out infinite,
+            sparkle 2s infinite alternate;
+    }
+
+    @keyframes sparkle {
+        0% {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        100% {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+    }
+</style>
+
+<style>
+    /* Created By Section Styles */
+    .created-by-section {
+        background: rgba(20, 40, 20, 0.6);
+        padding: 1.5rem;
+        border-radius: 15px;
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        height: fit-content;
+        margin: auto 0;
+        transition: all 0.3s ease;
+    }
+
+    .created-by-section:hover {
+        border-color: var(--accent-gold);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(255, 215, 0, 0.2);
+        transform: translateY(-5px);
+    }
+
+    .creator-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .creator-image-wrapper {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 0.5rem;
+    }
+
+    .creator-image-frame {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        border: 3px solid var(--accent-gold);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: rgba(20, 40, 20, 0.8);
+    }
+
+    .creator-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+        filter: brightness(0.9) contrast(1.1);
+    }
+
+    .creator-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(214, 40, 40, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .creator-image-overlay i {
+        font-size: 2.5rem;
+        color: white;
+        transform: scale(0);
+        transition: all 0.5s ease;
+    }
+
+    .creator-image-frame:hover {
+        transform: scale(1.1) rotate(5deg);
+        border-color: var(--accent-red);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.5),
+            0 0 15px rgba(214, 40, 40, 0.3);
+    }
+
+    .creator-image-frame:hover .creator-image {
+        transform: scale(1.1);
+        filter: brightness(1.1) contrast(1.2);
+    }
+
+    .creator-image-frame:hover .creator-image-overlay {
+        opacity: 1;
+    }
+
+    .creator-image-frame:hover .creator-image-overlay i {
+        transform: scale(1);
+        animation: heartbeat 1.2s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+    }
+
+    .creator-ornaments {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .creator-ornament {
+        position: absolute;
+        font-size: 1.2rem;
+        animation: floatOrnament 3s ease-in-out infinite;
+        opacity: 0.8;
+    }
+
+    .creator-ornament:nth-child(1) {
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 0s;
+    }
+
+    .creator-ornament:nth-child(2) {
+        top: 50%;
+        right: -15px;
+        transform: translateY(-50%);
+        animation-delay: 1s;
+    }
+
+    .creator-ornament:nth-child(3) {
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 2s;
+    }
+
+    @keyframes floatOrnament {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.8;
+        }
+
+        50% {
+            transform: translateY(-10px) rotate(20deg);
+            opacity: 1;
+        }
+    }
+
+    .creator-info {
+        width: 100%;
+    }
+
+    .creator-title {
+        font-size: 0.9rem;
+        color: var(--accent-silver);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 0.3rem;
+        font-weight: 300;
+        opacity: 0.8;
+    }
+
+    .creator-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.8rem;
+        color: var(--accent-gold);
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .creator-name:after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(90deg,
+                transparent,
+                var(--accent-gold),
+                var(--accent-red),
+                transparent);
+        border-radius: 2px;
+    }
+
+    .creator-message {
+        font-size: 0.9rem;
+        color: var(--accent-silver);
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+        padding: 0.5rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        border-left: 3px solid var(--accent-red);
+    }
+
+    .creator-message strong {
+        color: var(--accent-gold);
+        font-weight: 600;
+    }
+
+    .creator-signature {
+        font-size: 0.85rem;
+        color: var(--accent-silver);
+        font-style: italic;
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .creator-signature span {
+        color: var(--accent-gold);
+        animation: signatureGlow 2s ease-in-out infinite alternate;
+        font-weight: 500;
+    }
+
+    @keyframes signatureGlow {
+        0% {
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        100% {
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7),
+                0 0 5px rgba(214, 40, 40, 0.3);
+        }
+    }
+
+    /* Footer bottom styles */
+    .copyright-section {
+        text-align: center;
+        padding-top: 1.5rem;
+        color: var(--accent-silver);
+        font-size: 0.9rem;
+    }
+
+    .footer-credits {
+        margin-top: 0.5rem;
+        color: #aaa;
+        font-size: 0.85rem;
+    }
+
+    .footer-credits i {
+        color: var(--accent-gold);
+        margin: 0 0.3rem;
+        animation: snowflakeSpin 4s linear infinite;
+    }
+
+    @keyframes snowflakeSpin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+        .footer-content {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .created-by-section {
+            order: 3;
+            grid-column: 1 / -1;
+            margin-top: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .creator-container {
+            flex-direction: row;
+            text-align: left;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .creator-image-wrapper {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+
+        .creator-name {
+            font-size: 1.6rem;
+        }
+
+        .creator-message {
+            font-size: 0.85rem;
+        }
+
+        .creator-signature {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .creator-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .creator-name:after {
+            width: 80%;
+        }
+    }
+</style>
+
+<style>
+    .audio-controls {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+
+    .audio-button {
+        background: linear-gradient(135deg, var(--accent-gold), #ffa500);
+        border: 2px solid var(--accent-red);
+        color: var(--primary-dark);
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 215, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+        outline: none;
+        /* Remove the transform from here, it's on the parent */
+    }
+
+    .audio-button:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent);
+        transition: left 0.5s ease;
+    }
+
+    .audio-button:hover:before {
+        left: 100%;
+    }
+
+    .audio-button:hover {
+        /* Only scale, no translateY */
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 215, 0, 0.5),
+            0 0 10px rgba(214, 40, 40, 0.4);
+        border-color: var(--accent-gold);
+        background: linear-gradient(135deg, #ffa500, var(--accent-gold));
+    }
+
+    .audio-button:active {
+        /* Only scale down, no translate */
+        transform: scale(0.95);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3),
+            inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .audio-button i {
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .audio-button:hover i {
+        transform: scale(1.1) rotate(0deg);
+        color: #060b0c;
+    }
+
+    .audio-text {
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Pulsing animation when playing */
+    .audio-button.playing {
+        animation: pulseMusic 2s infinite;
+        background: linear-gradient(135deg, var(--accent-red), #ff3333);
+        color: white;
+    }
+
+    .audio-button.playing i {
+        animation: musicNote 1s infinite alternate;
+    }
+
+    @keyframes pulseMusic {
+        0% {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        50% {
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.6), 0 0 15px rgba(214, 40, 40, 0.5);
+        }
+
+        100% {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 0 10px rgba(255, 215, 0, 0.3);
+        }
+    }
+
+    @keyframes musicNote {
+        0% {
+            transform: scale(1) rotate(0deg);
+        }
+
+        100% {
+            transform: scale(1.1) rotate(0deg);
+        }
+    }
+
+    /* Volume control (optional) */
+    .volume-control {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        background: var(--card-bg);
+        padding: 0.8rem;
+        border-radius: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        border: 1px solid var(--accent-gold);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .audio-controls:hover .volume-control {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .volume-slider {
+        width: 120px;
+        height: 6px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: rgba(255, 215, 0, 0.2);
+        border-radius: 3px;
+        outline: none;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--accent-gold);
+        cursor: pointer;
+        border: 2px solid var(--accent-red);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .volume-slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--accent-gold);
+        cursor: pointer;
+        border: 2px solid var(--accent-red);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .audio-controls {
+            position: relative;
+            top: auto;
+            right: auto;
+            transform: none;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .audio-button {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .audio-button:hover {
+            transform: scale(1.05);
+        }
+
+        .audio-button:active {
+            transform: scale(0.95);
+        }
+
+        header {
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .audio-button {
+            padding: 0.5rem 1rem;
+        }
+
+        .audio-text {
+            display: none;
+        }
+
+        .audio-button i {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+    }
+</style>
+
+<style>
+    /* Simple Sound Button */
+    .sound-trigger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .sound-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 215, 0, 0.2);
+        border: 1px solid var(--accent-gold);
+        color: var(--accent-gold);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        transition: all 0.2s ease;
+        padding: 0;
+        outline: none;
+    }
+
+    .sound-btn:hover {
+        background: rgba(255, 215, 0, 0.3);
+        transform: scale(1.1);
+    }
+
+    .sound-btn:active {
+        transform: scale(0.95);
+    }
+
+    .sound-btn.playing {
+        background: var(--accent-gold);
+        color: var(--primary-dark);
+        animation: soundPulse 0.5s infinite;
+    }
+
+    @keyframes soundPulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.1);
+        }
+    }
+</style>
+
+<style>
+    /* Audio Progress Controls */
+    .audio-progress-container {
+        display: none;
+        /* Hidden by default, shown when playing */
+        position: absolute;
+        top: 60px;
+        right: 0px;
+        left: -80px;
+        width: 300px;
+        background: var(--card-bg);
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid var(--accent-gold);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    .audio-progress-container.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .current-time,
+    .total-time {
+        font-size: 0.8rem;
+        color: var(--accent-gold);
+        min-width: 35px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .progress-bar {
+        flex: 1;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+    }
+
+    .progress {
+        position: absolute;
+        height: 4px;
+        background: var(--accent-gold);
+        border-radius: 2px;
+        width: 0%;
+        transition: width 0.1s linear;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .seek-slider {
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+        margin: 0;
+    }
+
+    .seek-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent-gold);
+        cursor: pointer;
+        border: 2px solid var(--accent-red);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .seek-slider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent-gold);
+        cursor: pointer;
+        border: 2px solid var(--accent-red);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Progress bar track */
+    .progress-bar:before {
+        content: "";
+        position: absolute;
+        top: 60%;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: rgba(255, 215, 0, 0.2);
+        border-radius: 2px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    /* Time display container */
+    .audio-progress-container>div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /* Responsive for progress controls */
+
+    /* Show progress bar on hover of audio controls */
+    .audio-controls:hover .audio-progress-container {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .audio-progress-container {
+            position: fixed;
+            top: auto;
+            bottom: 100px;
+            transform: translateX(50%) translateY(-10px);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .audio-progress-container.show {
+            transform: translateX(50%) translateY(0);
+        }
+
+        .audio-controls {
+            display: none;
+        }
+
+        .logo-icon {
+            display: none;
+        }
+    }
+
+    #play-music-button {
+        display: none;
+    }
+</style>
+
+<body>
+    <!-- Animated Snow -->
+    <div class="snow-container" id="snow-container"></div>
+    <!-- Christmas Trees -->
+    <div class="christmas-tree tree-left"></div>
+    <div class="christmas-tree tree-right"></div>
+
+    <!-- Christmas Balls -->
+    <div class="christmas-ball ball-1"></div>
+    <div class="christmas-ball ball-2"></div>
+    <div class="christmas-ball ball-3"></div>
+    <div class="christmas-ball ball-4"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-sleigh"></i>
+            </div>
+            <div class="logo-text">
+                <h1>The Fapalorians</h1>
+                <p>XMAS Edition</p>
+            </div>
+        </div>
+        <div class="audio-controls">
+            <button class="audio-button" id="audio-toggle">
+                <i class="fas fa-play"></i>
+                <span class="audio-text" id="play-music-button">Play Music</span>
+            </button>
+
+            <!-- Audio Progress Controls -->
+            <div class="audio-progress-container">
+                <span class="current-time" id="current-time">0:00</span>
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress" id="progress"></div>
+                    <input type="range" id="seek-slider" class="seek-slider" min="0" max="100" value="0" />
+                </div>
+                <span class="total-time" id="total-time">0:00</span>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="volume-control">
+                <input type="range" min="0" max="1" step="0.1" value="0.5" class="volume-slider" id="volume-slider" />
+            </div>
+
+            <audio id="bg-music" loop>
+                <source src="Audio/MainSound.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </header>
+
+    <!-- Full Width Image Section -->
+    <section class="image-section">
+        <div class="image-container">
+            <img src="images/FapaloriansMainCartoon.png" alt="Christmas Celebration" class="christmas-image" />
+            <div class="image-overlay">
+                <h2 class="image-title">Welcome to our offical Web Page !!!</h2>
+                <p class="image-subtitle">
+                    Acoustic Group of Pharmacutical Students with self identifing
+                    issues... pou 8a h8elan na einai nanoi, gi' auto anebazoun oti, na'
+                    noi
+                </p>
+                <div class="image-ornaments">
+                    <div class="image-ornament">🎄</div>
+                    <div class="image-ornament">🎁</div>
+                    <div class="image-ornament">✨</div>
+                    <div class="image-ornament">❄️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Characters Title -->
+        <h2 class="section-title">Meet The Characters</h2>
+
+        <!-- Characters Grid -->
+        <div class="characters-grid">
+            <!-- Character 1 -->
+
+            <div class="character-card">
+                <div class="character-icon">
+                    <img src="images/Characters/Gkekos_Serious.jpg" alt="Gel Gel serious" class="primary-photo" />
+                    <img src="images/Characters/Gkekos_funny_3.jpg" alt="Gel Gel smiling" class="hover-photo" />
+                </div>
+                <h3 class="character-name">Gkekos</h3>
+
+                <div class="character-powers">
+                    <!-- Row 1, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                        <div class="power-content">
+                            <div class="sound-trigger">
+                                <button class="sound-btn" data-audio="Audio/gkelis_sound.mp3">
+                                    <i class="fa-solid fa-music"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="power-tooltip">If he was a sound?</div>
+                    </div>
+
+                    <!-- Row 1, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Daffy Duck</span>
+                        </div>
+                        <div class="power-tooltip">If he was a cartoon character?</div>
+                    </div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Personal Fitness Instractor (Peftoulas)</span>
+                        </div>
+                        <div class="power-tooltip">
+                            If he was not styding in the University?
+                        </div>
+                    </div>
+
+                    <!-- Row 2, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label"><strong>Plankton</strong> - SpongeBob</span>
+                        </div>
+                        <div class="power-tooltip">If he was a super-villan?</div>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <div class="by-text">Completed By: <span>John John</span></div>
+                </div>
+                <!-- Power 4 -->
+            </div>
+
+            <!-- Character 2 -->
+            <div class="character-card">
+                <div class="character-icon">
+                    <img src="images/Characters/Jhon_Serious.jpeg" alt="Jhon John serious" class="primary-photo" />
+                    <img src="images/Characters/Jhon_funny.jpeg.JPG" alt="Jhon John smiling" class="hover-photo" />
+                </div>
+                <h3 class="character-name">John John</h3>
+                <div class="character-powers">
+                    <!-- Row 1, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Ewwwww</span>
+                        </div>
+                        <div class="power-tooltip">If he was a sound?</div>
+                    </div>
+
+                    <!-- Row 1, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Barbie</span>
+                        </div>
+                        <div class="power-tooltip">If he was a cartoon character?</div>
+                    </div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">OPAP Owner</span>
+                        </div>
+                        <div class="power-tooltip">
+                            If he was not styding in the University?
+                        </div>
+                    </div>
+
+                    <!-- Row 2, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">MegaMind</span>
+                        </div>
+                        <div class="power-tooltip">If he was a super-villan?</div>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <div class="by-text">
+                        Completed By: <span>Dimitra-Eleutheria</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character 3 -->
+            <div class="character-card">
+                <div class="character-icon">
+                    <img src="images/Characters/Chris_Serious.jpeg" alt="Chris serious" class="primary-photo" />
+                    <img src="images/Characters/Chris_funny.jpeg.JPG" alt="Chris smiling" class="hover-photo" />
+                </div>
+                <h3 class="character-name">Chris</h3>
+                <div class="character-powers">
+                    <!-- Row 1, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                        <div class="power-content">
+                            <div class="sound-trigger">
+                                <button class="sound-btn" data-audio="Audio/chris_sound.mp3">
+                                    <i class="fa-solid fa-music"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="power-tooltip">If he was a sound?</div>
+                    </div>
+
+                    <!-- Row 1, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label"><strong>Rick Sanhez</strong> - Rick & Morty</span>
+                        </div>
+                        <div class="power-tooltip">If he was a cartoon character?</div>
+                    </div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">OPAP Owner</span>
+                        </div>
+                        <div class="power-tooltip">
+                            If he was not styding in the University?
+                        </div>
+                    </div>
+
+                    <!-- Row 2, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label"><strong>Shaco</strong> - LOL</span>
+                        </div>
+                        <div class="power-tooltip">If he was a super-villan?</div>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <div class="by-text">Completed By: <span>Mariw</span></div>
+                </div>
+            </div>
+
+            <!-- Character 4 -->
+            <div class="character-card">
+                <div class="character-icon">
+                    <img src="images/Characters/basilo_serious.JPG" alt="Chris serious" class="primary-photo" />
+                    <img src="images/Characters/basilo_funny.jpeg" alt="Chris smiling" class="hover-photo" />
+                </div>
+                <h3 class="character-name">Vasilo</h3>
+                <div class="character-powers">
+                    <!-- Row 1, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                        <div class="power-content">
+                            <div class="sound-trigger">
+                                <button class="sound-btn" data-audio="Audio/basilo_sound.wav">
+                                    <i class="fa-solid fa-music"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="power-tooltip">If he was a sound?</div>
+                    </div>
+
+                    <!-- Row 1, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label"><strong>Vanellope</strong> - Wreck-It Ralph</span>
+                        </div>
+                        <div class="power-tooltip">If he was a cartoon character?</div>
+                    </div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Stripper</span>
+                        </div>
+                        <div class="power-tooltip">
+                            If he was not styding in the University?
+                        </div>
+                    </div>
+
+                    <!-- Row 2, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Harley Queen</span>
+                        </div>
+                        <div class="power-tooltip">If he was a super-villan?</div>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <div class="by-text">Completed By: <span>Chris</span></div>
+                </div>
+            </div>
+
+            <!-- Character 5 -->
+            <div class="character-card">
+                <div class="character-icon">
+                    <img src="images/Characters/Kaith_Serious_2.jpg" alt="Chris serious" class="primary-photo" />
+                    <img src="images/Characters/Kaith_funny.jpg" alt="Chris smiling" class="hover-photo" />
+                </div>
+                <h3 class="character-name">Kaitopaido</h3>
+                <div class="character-powers">
+                    <!-- Row 1, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                        <div class="power-content">
+                            <div class="sound-trigger">
+                                <button class="sound-btn" data-audio="Audio/kaiti_sound.mp3">
+                                    <i class="fa-solid fa-music"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="power-tooltip">If he was a sound?</div>
+                    </div>
+
+                    <!-- Row 1, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label"><strong>Disgust</strong> - Inside Out</span>
+                        </div>
+                        <div class="power-tooltip">If he was a cartoon character?</div>
+                    </div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Executioner - No splashes</span>
+                        </div>
+                        <div class="power-tooltip">
+                            If he was not styding in the University?
+                        </div>
+                    </div>
+
+                    <!-- Row 2, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label"><strong>Yzma</strong> - Autokratoras exei kefia</span>
+                        </div>
+                        <div class="power-tooltip">If he was a super-villan?</div>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <div class="by-text">Completed By: <span>Vasilo</span></div>
+                </div>
+            </div>
+
+            <!-- Character 6 -->
+            <div class="character-card">
+                <div class="character-icon">
+                    <img src="images/Characters/Maria_Serious.jpg" alt="Chris serious" class="primary-photo" />
+                    <img src="images/Characters/Maria_Funny.jpeg" alt="Chris smiling" class="hover-photo" />
+                </div>
+                <h3 class="character-name">Mariw</h3>
+                <div class="character-powers">
+                    <!-- Row 1, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Ewwwww</span>
+                        </div>
+                        <div class="power-tooltip">If he was a sound?</div>
+                    </div>
+
+                    <!-- Row 1, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Barbie</span>
+                        </div>
+                        <div class="power-tooltip">If he was a cartoon character?</div>
+                    </div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">OPAP Owner</span>
+                        </div>
+                        <div class="power-tooltip">
+                            If he was not styding in the University?
+                        </div>
+                    </div>
+
+                    <!-- Row 2, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">MegaMind</span>
+                        </div>
+                        <div class="power-tooltip">If he was a super-villan?</div>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <div class="by-text">Completed By: <span>Kaitopaido</span></div>
+                </div>
+            </div>
+
+            <div class="character-card">
+                <div class="character-icon">
+                    <img src="images/Characters/emi_serious.JPG" alt="Chris serious" class="primary-photo" />
+                    <img src="images/Characters/emi_funny.JPG" alt="Chris smiling" class="hover-photo" />
+                </div>
+                <h3 class="character-name">Dimitra-Eleutheria</h3>
+                <div class="character-powers">
+                    <!-- Row 1, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-face-surprise"></i>
+                        </div>
+                        <div class="power-content">
+                            <div class="sound-trigger">
+                                <button class="sound-btn" data-audio="Audio/emi_sound.mp3">
+                                    <i class="fa-solid fa-music"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="power-tooltip">If he was a sound?</div>
+                    </div>
+
+                    <!-- Row 1, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fas fa-mask"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Dexter - Dexter's Laboratory</span>
+                        </div>
+                        <div class="power-tooltip">If he was a cartoon character?</div>
+                    </div>
+
+                    <!-- Row 2, Col 1 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Ektrofeio Xinas</span>
+                        </div>
+                        <div class="power-tooltip">
+                            If he was not styding in the University?
+                        </div>
+                    </div>
+
+                    <!-- Row 2, Col 2 -->
+                    <div class="power-item">
+                        <div class="power-icon">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="power-content">
+                            <span class="power-label">Alcina Dimitrescu</span>
+                        </div>
+                        <div class="power-tooltip">If he was a super-villan?</div>
+                    </div>
+                </div>
+
+                <div class="author-section">
+                    <div class="by-text">Completed By: <span>Gkekos</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creta Photos Section -->
+    <section class="photos-section">
+        <section class="image-section_02">
+            <div class="image-container">
+                <img src="images/Creta/1.jpg" alt="Christmas Celebration" class="creta-image" />
+                <div class="image-overlay_02">
+                    <h2 class="image-title">Creta Memories</h2>
+                </div>
+            </div>
+        </section>
+        <div class="polaroid-grid">
+            <!-- Photo 2 -->
+            <div class="polaroid-card">
+                <img src="images/Creta/2.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(47, 100, 180)">
+                    Blue eyes - Blue tongue
+                </div>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="polaroid-card">
+                <img src="images/Creta/3.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(235, 135, 6)">
+                    Protection above all
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/4.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(132, 160, 9)">
+                    Agia Pelagia Day
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/5.JPG" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(34, 34, 34)">
+                    Crosswords
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/6.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgba(167, 125, 63, 0.863)">
+                    Keratokampos Beach
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/7.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(3, 109, 59)">
+                    Kourtaliotiko Day
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/8.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(66, 27, 110)">
+                    Kritika, Entexna, Trap, White Girl Music
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/9.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(110, 27, 27)">BBQ</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/10.JPG" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(102, 102, 102)">
+                    Young Black & Rich <br />
+                    (Trend)
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/11.JPG" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(177, 69, 144)">
+                    Shake that ass for Maria
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/12.jpg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(93, 184, 149)">
+                    1st Official Kritiko Glenti
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/13.JPG" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(196, 38, 18)">
+                    The one and only KAVLANTA
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/14.JPG" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(196, 176, 89)">
+                    BITCH Volley
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/15.JPG" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(224, 55, 140)">
+                    Girls Illusion
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Creta/16.jpeg" alt="Creta Beach" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: rgb(54, 33, 16)">
+                    Tsigariasto Indeed
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Photos Section -->
+    <section class="photos-section">
+        <section class="image-section_02">
+            <div class="image-container">
+                <img src="images/School/Photos/Main.JPG" alt="Christmas Celebration" class="creta-image" />
+                <div class="image-overlay_02">
+                    <h2 class="image-title">University</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="sub-section">
+            <h3 class="sub-title">Photos</h3>
+            <div class="decorative-line">
+                <span class="line-ornament">📸</span>
+            </div>
+        </section>
+        <div class="polaroid-grid">
+            <!-- Photo 2 -->
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_0586.jpg" alt="Classroom Fun" class="polaroid-image" />
+                <div class="polaroid-date" style="color: #018dc5">Fun Lab Day</div>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_1198.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #520470">
+                    Pws eisai etsi??????
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_3397.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #c53f01">
+                    Xara & Tsaxpinia
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_3545.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #7e8d61">
+                    Boston kai ta arxidia mas kouniountai...
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_4003.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #06171a">Serious Bruh ?</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_4480.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #054b7a">Fantastic 4</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_7462.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #b68c05">
+                    Poios se malwse paidaki moy?
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_7790.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #830f0b">Etsi 8a se paw</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/QOIB9681.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #0b834b">Peace of Shit</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/HHWK3040.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #8e4de4">BOOBIES!!!</div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_8619.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #635644">
+                    Malaka o Chris...
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/School/Photos/IMG_1185.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #e20404">BANG!!!</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sub-section">
+        <h3 class="sub-title">Videos</h3>
+        <div class="decorative-line">
+            <span class="line-ornament">🎬</span>
+        </div>
+    </section>
+
+    <section class="photos-section">
+        <div class="polaroid-grid">
+            <!-- Photo 1 -->
+            <div class="polaroid-card">
+                <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                    <source src="images/School/Videos/MEXS0503.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                    <source src="images/School/Videos/IMG_4205.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div class="polaroid-date" style="color: #aa8712">
+                    To shmantiko einai na mhdenisoume
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                    <source src="images/School/Videos/HMFJ3074.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div class="polaroid-date" style="color: #aa8712">
+                    To shmantiko einai na mhdenisoume
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                    <source src="images/School/Videos/VDGH0201.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div class="polaroid-date" style="color: #aa8712">
+                    To shmantiko einai na mhdenisoume
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="photos-section">
+        <section class="image-section_02">
+            <div class="image-container">
+                <img src="images/Other/Photos/Main.jpG" alt="Christmas Celebration" class="creta-image" />
+                <div class="image-overlay_02">
+                    <h2 class="image-title">Fapalorians in Action</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="sub-section">
+            <h3 class="sub-title">Photos</h3>
+            <div class="decorative-line">
+                <span class="line-ornament">📸</span>
+            </div>
+        </section>
+
+        <div class="polaroid-grid">
+            <!-- Photo 1 -->
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/1.jpeg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    O Mikrokosmos
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/2.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Eimai h den eimai h prwtagwnistria
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/3.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    No comment
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/4.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    ...
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/5.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Trexane pisw apo gkomenes
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/6.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    DEPY x DEPY
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/7.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/8.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Love is in the air
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/9.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/10.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Kaith tyfla - top contend
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/11.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Panta aristera - ghetto
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/12.jpeg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Tria poulakia ka8ontan
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/13.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Ontaaaaaasssssss
+                </div>
+            </div>
+
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/14.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Monaxia
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/15.JPEG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Say hello to my little friend
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/16.jpeg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Ery8ros stauros core
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/17.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/18.jpeg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    I'm Batman
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/19.jpeg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Iwannou
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/20.jpeg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    Aggelopoulos
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/22.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/23.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/24.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/25.jpg" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/26.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+            <div class="polaroid-card">
+                <img src="images/Other/Photos/27.JPG" alt="School Event" class="polaroid-image" />
+
+                <div class="polaroid-date" style="color: #064215">
+                    S&D (Singing & Developing) Department
+                </div>
+            </div>
+        </div>
+
+        <section class="sub-section">
+            <h3 class="sub-title">Videos</h3>
+            <div class="decorative-line">
+                <span class="line-ornament">🎬</span>
+            </div>
+        </section>
+
+        <section class="photos-section">
+            <div class="polaroid-grid">
+                <!-- Photo 1 -->
+                <div class="polaroid-card">
+                    <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                        <source src="images/Other/Videos/4.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="polaroid-date" style="color: #064215">
+                        2 wres prin thn exetash
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                        <source src="images/Other/Videos/5.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="polaroid-date" style="color: #064215">
+                        To gati moy kaigetai
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                        <source src="images/Other/Videos/6.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="polaroid-date" style="color: #064215">
+                        Poto 1 - Maria 0
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                        <source src="images/Other/Videos/7.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="polaroid-date" style="color: #064215">
+                        Twerk lesson
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                        <source src="images/Other/Videos/1.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="polaroid-date" style="color: #064215">
+                        Afierwmeno
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                        <source src="images/Other/Videos/2.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="polaroid-date" style="color: #064215">
+                        Aloha!
+                    </div>
+                </div>
+                <div class="polaroid-card">
+                    <video controls muted playsinline preload="metadata" style="width: 100%; height: auto">
+                        <source src="images/Other/Videos/3.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="polaroid-date" style="color: #064215">
+                        Trashing the developer. You bastards
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Footer Ornaments -->
+        <div class="footer-ornament orn-1"></div>
+        <div class="footer-ornament orn-2"></div>
+        <div class="footer-ornament orn-3"></div>
+        <div class="footer-ornament orn-4"></div>
+
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">About The Fapalorians</h3>
+                <p class="footer-text">
+                    A legendary Christmas crew spreading joy and festive magic since
+                    2023. Each member brings unique talents to create unforgettable
+                    holiday experiences that warm hearts and create lasting memories.
+                </p>
+                <p class="footer-text">
+                    From cookie baking to carol singing, we're dedicated to making every
+                    Christmas special and magical for everyone we meet.
+                </p>
+                <audio controls src="Audio/fapa_original.mp3"></audio>
+            </div>
+
+            <!-- Created By Section (Middle Column) -->
+            <div class="footer-section created-by-section">
+                <div class="creator-container">
+                    <div class="creator-image-wrapper">
+                        <div class="creator-image-frame">
+                            <img src="images/Characters/IMG_7349.JPG" alt="Creator" class="creator-image" />
+                            <div class="creator-image-overlay">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="creator-ornaments">
+                            <span class="creator-ornament">🎨</span>
+                            <span class="creator-ornament">💻</span>
+                            <span class="creator-ornament">✨</span>
+                        </div>
+                    </div>
+                    <div class="creator-info">
+                        <h4 class="creator-title">Created By</h4>
+                        <h3 class="creator-name">Georgis</h3>
+                        <p class="creator-message">
+                            <strong>So that I don't have to get you any actual presents
+                                !!!</strong>
+                        </p>
+                        <div class="creator-signature">
+                            <span>🎄 Keep going you little fuckers! 🎅</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Countdown Section -->
+            <div class="footer-section">
+                <div class="countdown-section">
+                    <div class="countdown-title">Christmas Countdown</div>
+                    <div class="countdown-container">
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="days">00</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="hours">00</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="minutes">00</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value" id="seconds">00</div>
+                            <div class="countdown-label">Seconds</div>
+                        </div>
+                    </div>
+                    <div class="countdown-message">
+                        <i class="fas fa-gift"></i>
+                        Santa is getting ready!
+                        <i class="fas fa-tree"></i>
+                    </div>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="copyright-section">
+                <p>© 2023 The Fapalorians Christmas Crew. All Rights Reserved.</p>
+                <p class="footer-credits">
+                    <i class="fas fa-snowflake"></i> Merry Christmas!
+                    <i class="fas fa-snowflake"></i>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create advanced snowflakes
+        function createSnowflakes() {
+            const snowContainer = document.getElementById("snow-container");
+            const snowflakeCount = 100;
+
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement("div");
+                snowflake.classList.add("snowflake");
+
+                // Random size between 5 and 15px
+                const size = Math.random() * 10 + 5;
+                snowflake.style.width = `${size}px`;
+                snowflake.style.height = `${size}px`;
+
+                // Random position
+                snowflake.style.left = `${Math.random() * 100}vw`;
+
+                // Random opacity
+                snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+
+                // Random animation duration
+                const duration = Math.random() * 8 + 5;
+                snowflake.style.animationDuration = `${duration}s`;
+
+                // Random animation delay
+                snowflake.style.animationDelay = `${Math.random() * 5}s`;
+
+                // Random z-index
+                snowflake.style.zIndex = Math.floor(Math.random() * 3) + 1;
+
+                snowContainer.appendChild(snowflake);
+            }
+        }
+
+        // Christmas Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+
+            // Christmas date (December 25th of current year)
+            let christmas = new Date(currentYear, 11, 25);
+
+            // If Christmas has passed this year, set to next year
+            if (now > christmas) {
+                christmas.setFullYear(currentYear + 1);
+            }
+
+            const diff = christmas - now;
+
+            // Calculate days, hours, minutes, seconds
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+                (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            // Update display
+            document.getElementById("days").textContent = days
+                .toString()
+                .padStart(2, "0");
+            document.getElementById("hours").textContent = hours
+                .toString()
+                .padStart(2, "0");
+            document.getElementById("minutes").textContent = minutes
+                .toString()
+                .padStart(2, "0");
+            document.getElementById("seconds").textContent = seconds
+                .toString()
+                .padStart(2, "0");
+
+            // Add animation to countdown numbers
+            if (seconds === 0) {
+                animateCountdown();
+            }
+        }
+
+        // Animate countdown numbers
+        function animateCountdown() {
+            const values = document.querySelectorAll(".countdown-value");
+            values.forEach((value) => {
+                value.style.transform = "scale(1.2)";
+                setTimeout(() => {
+                    value.style.transform = "scale(1)";
+                }, 300);
+            });
+        }
+
+        // Interactive Christmas balls
+        document.querySelectorAll(".christmas-ball").forEach((ball) => {
+            ball.addEventListener("mouseenter", function () {
+                this.style.transform = "scale(1.3)";
+                this.style.boxShadow = "0 0 25px rgba(255, 255, 255, 0.9)";
+            });
+
+            ball.addEventListener("mouseleave", function () {
+                this.style.transform = "scale(1)";
+                this.style.boxShadow = "0 5px 15px rgba(255, 255, 255, 0.2)";
+            });
+        });
+
+        // Character card hover effects
+        document.querySelectorAll(".character-card").forEach((card) => {
+            card.addEventListener("mouseenter", function () {
+                const icon = this.querySelector(".character-icon i");
+                if (icon) {
+                    icon.style.transform = "scale(1.3) rotate(15deg)";
+                    icon.style.textShadow = "0 0 20px currentColor";
+                }
+            });
+
+            card.addEventListener("mouseleave", function () {
+                const icon = this.querySelector(".character-icon i");
+                if (icon) {
+                    icon.style.transform = "scale(1) rotate(0deg)";
+                    icon.style.textShadow = "none";
+                }
+            });
+        });
+
+        // Make trees sparkle randomly
+        function sparkleTrees() {
+            const trees = document.querySelectorAll(".christmas-tree");
+            trees.forEach((tree) => {
+                setInterval(() => {
+                    tree.style.boxShadow = "0 0 30px rgba(255, 215, 0, 0.7)";
+                    setTimeout(() => {
+                        tree.style.boxShadow = "none";
+                    }, 800);
+                }, Math.random() * 4000 + 3000);
+            });
+        }
+
+        // Create interactive snow on click
+        document.addEventListener("click", function (e) {
+            const snowburst = document.createElement("div");
+            snowburst.style.position = "fixed";
+            snowburst.style.left = e.clientX + "px";
+            snowburst.style.top = e.clientY + "px";
+            snowburst.style.width = "0";
+            snowburst.style.height = "0";
+            snowburst.style.borderRadius = "50%";
+            snowburst.style.background =
+                "radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)";
+            snowburst.style.zIndex = "9999";
+            snowburst.style.pointerEvents = "none";
+            snowburst.style.transition = "all 0.5s ease-out";
+
+            document.body.appendChild(snowburst);
+
+            // Animate the burst
+            setTimeout(() => {
+                snowburst.style.width = "200px";
+                snowburst.style.height = "200px";
+                snowburst.style.opacity = "0";
+                snowburst.style.marginLeft = "-100px";
+                snowburst.style.marginTop = "-100px";
+            }, 10);
+
+            // Remove after animation
+            setTimeout(() => {
+                snowburst.remove();
+            }, 600);
+        });
+
+        // Add floating effect to logo
+        const logoIcon = document.querySelector(".logo-icon");
+        setInterval(() => {
+            logoIcon.style.transform = "translateY(-5px)";
+            setTimeout(() => {
+                logoIcon.style.transform = "translateY(0)";
+            }, 1000);
+        }, 2000);
+
+        // Make footer ornaments sparkle
+        document.querySelectorAll(".footer-ornament").forEach((orn) => {
+            setInterval(() => {
+                orn.style.boxShadow = "0 0 15px rgba(255, 255, 255, 0.7)";
+                setTimeout(() => {
+                    orn.style.boxShadow = "none";
+                }, 500);
+            }, Math.random() * 3000 + 2000);
+        });
+
+        // Initialize when page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            createSnowflakes();
+            sparkleTrees();
+
+            // Start countdown timer
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // Add subtle background animation
+            document.body.style.background =
+                "linear-gradient(45deg, #0A1A0A, #0C3912, #145A32)";
+            document.body.style.backgroundSize = "400% 400%";
+            document.body.style.animation = "gradientShift 15s ease infinite";
+
+            // Add the gradient animation
+            const style = document.createElement("style");
+            style.textContent = `
+                @keyframes gradientShift {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Polaroid card interaction
+            document.querySelectorAll(".polaroid-card").forEach((card) => {
+                card.addEventListener("mouseenter", function () {
+                    // Add shimmer effect
+                    const shimmer = document.createElement("div");
+                    shimmer.className = "polaroid-shimmer";
+                    shimmer.style.position = "absolute";
+                    shimmer.style.top = "0";
+                    shimmer.style.left = "-100%";
+                    shimmer.style.width = "100%";
+                    shimmer.style.height = "100%";
+                    shimmer.style.background =
+                        "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)";
+                    shimmer.style.zIndex = "1";
+                    this.appendChild(shimmer);
+
+                    // Animate shimmer
+                    setTimeout(() => {
+                        shimmer.style.left = "100%";
+                        shimmer.style.transition = "left 0.8s ease";
+                    }, 10);
+
+                    // Remove shimmer after animation
+                    setTimeout(() => {
+                        shimmer.remove();
+                    }, 900);
+                });
+
+                // Add click sound effect (optional)
+                card.addEventListener("click", function () {
+                    const clickSound = new Audio(
+                        "https://assets.mixkit.co/sfx/preview/mixkit-camera-shutter-click-1133.mp3"
+                    );
+                    clickSound.volume = 0.3;
+                    clickSound
+                        .play()
+                        .catch((e) => console.log("Audio play failed:", e));
+
+                    // Add flash effect
+                    this.style.backgroundColor = "#fff";
+                    setTimeout(() => {
+                        this.style.backgroundColor = "";
+                    }, 300);
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const video = document.querySelector("video[autoplay]");
+
+            if (video) {
+                video.muted = true;
+                video.play().catch((error) => {
+                    console.log("Autoplay failed:", error);
+
+                    // Fallback: Play on user interaction
+                    document.addEventListener("click", function playVideoOnce() {
+                        video.play();
+                        document.removeEventListener("click", playVideoOnce);
+                    });
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const creatorImage = document.querySelector(".creator-image-frame");
+
+            if (creatorImage) {
+                // Add hover effect for creator image
+                creatorImage.addEventListener("mouseenter", function () {
+                    this.style.transform = "scale(1.1) rotate(5deg)";
+                });
+
+                creatorImage.addEventListener("mouseleave", function () {
+                    this.style.transform = "scale(1) rotate(0deg)";
+                });
+
+                // Add click effect
+                creatorImage.addEventListener("click", function () {
+                    this.style.transform = "scale(0.9)";
+                    setTimeout(() => {
+                        this.style.transform = "scale(1.1)";
+                    }, 100);
+
+                    // Add sparkle effect
+                    const sparkles = ["✨", "🎄", "🎁", "❄️", "⭐"];
+                    for (let i = 0; i < 3; i++) {
+                        const sparkle = document.createElement("span");
+                        sparkle.textContent =
+                            sparkles[Math.floor(Math.random() * sparkles.length)];
+                        sparkle.style.position = "absolute";
+                        sparkle.style.fontSize = "1.5rem";
+                        sparkle.style.color = "#ffd700";
+                        sparkle.style.opacity = "0";
+                        sparkle.style.zIndex = "1000";
+
+                        const x = Math.random() * 100;
+                        const y = Math.random() * 100;
+
+                        sparkle.style.left = `${x}%`;
+                        sparkle.style.top = `${y}%`;
+
+                        this.appendChild(sparkle);
+
+                        // Animate sparkle
+                        sparkle.animate(
+                            [
+                                { opacity: 0, transform: "scale(0) rotate(0deg)" },
+                                { opacity: 1, transform: "scale(1) rotate(180deg)" },
+                                { opacity: 0, transform: "scale(0) rotate(360deg)" },
+                            ],
+                            {
+                                duration: 1000,
+                                easing: "ease-out",
+                            }
+                        );
+
+                        // Remove sparkle after animation
+                        setTimeout(() => {
+                            sparkle.remove();
+                        }, 1000);
+                    }
+                });
+            }
+        });
+
+        // Audio Player with Progress Bar
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioButton = document.getElementById("audio-toggle");
+            const bgMusic = document.getElementById("bg-music");
+
+            // Progress bar elements (add these IDs to your HTML)
+            const progressBar = document.getElementById("progress-bar");
+            const progress = document.getElementById("progress");
+            const seekSlider = document.getElementById("seek-slider");
+            const currentTime = document.getElementById("current-time");
+            const totalTime = document.getElementById("total-time");
+            const progressContainer = document.querySelector(
+                ".audio-progress-container"
+            );
+            const volumeSlider = document.getElementById("volume-slider");
+
+            if (audioButton && bgMusic) {
+                // Set initial volume
+                bgMusic.volume = volumeSlider ? volumeSlider.value : 0.5;
+
+                // Format time function
+                function formatTime(seconds) {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs.toString().padStart(2, "0")}`;
+                }
+
+                // Update progress bar
+                function updateProgress() {
+                    if (bgMusic.duration) {
+                        const percent = (bgMusic.currentTime / bgMusic.duration) * 100;
+                        progress.style.width = `${percent}%`;
+                        seekSlider.value = percent;
+                        currentTime.textContent = formatTime(bgMusic.currentTime);
+                    }
+                }
+
+                // Update total time when metadata loads
+                bgMusic.addEventListener("loadedmetadata", function () {
+                    totalTime.textContent = formatTime(bgMusic.duration);
+                });
+
+                // Update progress while playing
+                bgMusic.addEventListener("timeupdate", updateProgress);
+
+                // Seek functionality
+                seekSlider.addEventListener("input", function () {
+                    if (bgMusic.duration) {
+                        const seekTime = (this.value / 100) * bgMusic.duration;
+                        bgMusic.currentTime = seekTime;
+                    }
+                });
+
+                // Click on progress bar to seek
+                if (progressBar) {
+                    progressBar.addEventListener("click", function (e) {
+                        const rect = this.getBoundingClientRect();
+                        const percent = (e.clientX - rect.left) / rect.width;
+                        if (bgMusic.duration) {
+                            bgMusic.currentTime = percent * bgMusic.duration;
+                        }
+                    });
+                }
+
+                // Volume control
+                if (volumeSlider) {
+                    volumeSlider.addEventListener("input", function () {
+                        bgMusic.volume = this.value;
+                    });
+                }
+
+                // Show/hide progress bar
+                function showProgressBar() {
+                    if (progressContainer) {
+                        progressContainer.classList.add("show");
+                    }
+                }
+
+                function hideProgressBar() {
+                    if (!bgMusic.paused) return; // Keep showing if playing
+                    setTimeout(() => {
+                        if (bgMusic.paused && progressContainer) {
+                            progressContainer.classList.remove("show");
+                        }
+                    }, 3000); // Hide after 3 seconds of pause
+                }
+
+                // Try to play automatically (with user interaction fallback)
+                function tryAutoPlay() {
+                    bgMusic
+                        .play()
+                        .then(() => {
+                            audioButton.classList.add("playing");
+                            audioButton.innerHTML =
+                                '<i class="fas fa-pause"></i><span class="audio-text">Pause Music</span>';
+                            showProgressBar();
+                        })
+                        .catch((error) => {
+                            console.log("Autoplay prevented:", error);
+                            // User interaction needed
+                            audioButton.innerHTML =
+                                '<i class="fas fa-play"></i><span class="audio-text">Play Music</span>';
+                        });
+                }
+
+                // Try autoplay on load
+                tryAutoPlay();
+
+                audioButton.addEventListener("click", function () {
+                    if (bgMusic.paused) {
+                        bgMusic
+                            .play()
+                            .then(() => {
+                                this.classList.add("playing");
+                                this.innerHTML =
+                                    '<i class="fas fa-pause"></i><span class="audio-text">Pause Music</span>';
+                                showProgressBar();
+
+                                // Add visual feedback
+                                this.style.transform = "scale(1.1)";
+                                setTimeout(() => {
+                                    this.style.transform = "";
+                                }, 200);
+                            })
+                            .catch((error) => {
+                                console.log("Play failed:", error);
+                                // Removed alert for better UX
+                            });
+                    } else {
+                        bgMusic.pause();
+                        this.classList.remove("playing");
+                        this.innerHTML =
+                            '<i class="fas fa-play"></i><span class="audio-text">Play Music</span>';
+                        hideProgressBar();
+
+                        // Add visual feedback
+                        this.style.transform = "scale(0.95)";
+                        setTimeout(() => {
+                            this.style.transform = "";
+                        }, 200);
+                    }
+                });
+
+                // Show progress bar when hovering over audio controls
+                audioButton.addEventListener("mouseenter", showProgressBar);
+
+                if (progressContainer) {
+                    progressContainer.addEventListener("mouseenter", showProgressBar);
+                    progressContainer.addEventListener("mouseleave", hideProgressBar);
+                }
+
+                // Hide progress bar initially
+                hideProgressBar();
+
+                // Update button on audio end (if not looping)
+                bgMusic.addEventListener("ended", function () {
+                    if (!bgMusic.loop) {
+                        audioButton.classList.remove("playing");
+                        audioButton.innerHTML =
+                            '<i class="fas fa-play"></i><span class="audio-text">Play Music</span>';
+                        hideProgressBar();
+                    }
+                });
+
+                // Add snow effect when music starts
+                bgMusic.addEventListener("play", function () {
+                    createMusicSnow();
+                });
+            }
+
+            // Make sure createMusicSnow function exists
+            function createMusicSnow() {
+                // Your existing createMusicSnow function
+                for (let i = 0; i < 20; i++) {
+                    const musicNote = document.createElement("div");
+                    musicNote.innerHTML = ["🎵", "🎶", "🎼", "🎹", "🎷", "🎺", "🎻"][
+                        Math.floor(Math.random() * 7)
+                    ];
+                    musicNote.style.position = "fixed";
+                    musicNote.style.fontSize = Math.random() * 20 + 15 + "px";
+                    musicNote.style.top = "-50px";
+                    musicNote.style.left = Math.random() * 100 + "vw";
+                    musicNote.style.zIndex = "9999";
+                    musicNote.style.opacity = "0.8";
+                    musicNote.style.pointerEvents = "none";
+                    musicNote.style.animation = `musicNoteFall ${Math.random() * 3 + 2
+                        }s linear forwards`;
+
+                    document.body.appendChild(musicNote);
+
+                    // Remove after animation
+                    setTimeout(() => {
+                        musicNote.remove();
+                    }, 3000);
+                }
+            }
+
+            // Add music note animation if not already added
+            if (!document.querySelector("style#music-note-animation")) {
+                const style = document.createElement("style");
+                style.id = "music-note-animation";
+                style.textContent = `
+            @keyframes musicNoteFall {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+                document.head.appendChild(style);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Store currently playing audio
+            let currentAudio = null;
+
+            document.querySelectorAll(".sound-btn").forEach((button) => {
+                button.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    const audioSrc = this.dataset.audio;
+
+                    if (!audioSrc) return;
+
+                    // If this audio is already playing, stop it
+                    if (currentAudio && !currentAudio.paused) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+
+                        // Remove playing class from previous button
+                        document.querySelectorAll(".sound-btn.playing").forEach((btn) => {
+                            btn.classList.remove("playing");
+                        });
+
+                        // If it's the same button, just stop
+                        if (currentAudio.src.includes(audioSrc)) {
+                            currentAudio = null;
+                            return;
+                        }
+                    }
+
+                    // Create and play new audio
+                    currentAudio = new Audio(audioSrc);
+                    currentAudio.volume = 0.5;
+
+                    currentAudio
+                        .play()
+                        .then(() => {
+                            this.classList.add("playing");
+
+                            // Reset button when audio ends
+                            currentAudio.addEventListener("ended", () => {
+                                this.classList.remove("playing");
+                                currentAudio = null;
+                            });
+
+                            // Reset button on error
+                            currentAudio.addEventListener("error", () => {
+                                this.classList.remove("playing");
+                                this.innerHTML =
+                                    '<i class="fas fa-exclamation-triangle"></i>';
+                                this.style.color = "var(--accent-red)";
+                                this.style.cursor = "not-allowed";
+                                currentAudio = null;
+                            });
+                        })
+                        .catch((error) => {
+                            console.log("Audio play failed:", error);
+                            currentAudio = null;
+                        });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
