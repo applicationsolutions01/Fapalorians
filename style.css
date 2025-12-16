@@ -1,0 +1,1108 @@
+
+
+/* Advanced Snow Animation */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.snowflake {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+    filter: blur(1px);
+}
+
+.snowflake:nth-child(odd) {
+    background: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
+}
+
+.snowflake:nth-child(even) {
+    background: linear-gradient(135deg, #f0f8ff 0%, #d1ecff 100%);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px) translateX(0) rotate(0deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateY(100vh) translateX(20px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Christmas Trees */
+.christmas-tree {
+    position: fixed;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.tree-left {
+    bottom: 0;
+    left: 2%;
+    width: 120px;
+    height: 180px;
+    background: linear-gradient(to bottom, #145a32 0%, #0c3912 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.tree-left:before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: #d62828;
+    border-radius: 50%;
+}
+
+.tree-left:after {
+    content: "✨";
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    font-size: 20px;
+    animation: twinkle 2s infinite alternate;
+}
+
+.tree-right {
+    bottom: 0;
+    right: 3%;
+    width: 150px;
+    height: 200px;
+    background: linear-gradient(to bottom, #1a6b3c 0%, #0c3912 100%);
+    clip-path: polygon(50% 0%,
+            30% 30%,
+            0% 50%,
+            30% 70%,
+            10% 100%,
+            50% 85%,
+            90% 100%,
+            70% 70%,
+            100% 50%,
+            70% 30%);
+}
+
+.tree-right:before {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    background: #ffd700;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+}
+
+/* Floating Christmas Balls */
+.christmas-ball {
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    animation: floatBall 6s ease-in-out infinite;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.ball-1 {
+    top: 15%;
+    left: 10%;
+    background: radial-gradient(circle at 30% 30%, #ff3333, #cc0000);
+    animation-delay: 0s;
+}
+
+.ball-2 {
+    top: 25%;
+    right: 15%;
+    background: radial-gradient(circle at 30% 30%, #33cc33, #009900);
+    animation-delay: 1s;
+}
+
+.ball-3 {
+    top: 60%;
+    left: 5%;
+    background: radial-gradient(circle at 30% 30%, #ffff33, #cccc00);
+    animation-delay: 2s;
+}
+
+.ball-4 {
+    top: 70%;
+    right: 8%;
+    background: radial-gradient(circle at 30% 30%, #ff66ff, #cc00cc);
+    animation-delay: 3s;
+}
+
+@keyframes floatBall {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+    }
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Modern Header */
+header {
+    padding: 2rem 5%;
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    background: rgba(10, 26, 10, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    gap: 1.5rem;
+}
+
+.logo-icon {
+    font-size: 3.5rem;
+    color: var(--accent-gold);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    }
+
+    to {
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+    }
+}
+
+.logo-text h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.5rem;
+    background: linear-gradient(to right,
+            var(--accent-gold),
+            #ffa500,
+            var(--accent-red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text p {
+    font-size: 1.2rem;
+    color: var(--accent-silver);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+/* Full Width Image Section */
+.image-section {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    border-radius: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.christmas-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.1);
+    transition: transform 10s ease;
+}
+
+.image-section:hover .christmas-image {
+    transform: scale(1.1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(10, 26, 10, 0.7) 0%,
+            rgba(10, 26, 10, 0.4) 50%,
+            rgba(10, 26, 10, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.image-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 4rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+            0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
+    100% {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+            0 0 25px rgba(255, 215, 0, 0.7);
+    }
+}
+
+.image-subtitle {
+    font-size: 1.8rem;
+    color: var(--accent-silver);
+    max-width: 800px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.image-ornaments {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.image-ornament {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    animation: ornamentFloat 4s ease-in-out infinite;
+}
+
+.image-ornament:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.image-ornament:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.image-ornament:nth-child(3) {
+    animation-delay: 2s;
+}
+
+.image-ornament:nth-child(4) {
+    animation-delay: 3s;
+}
+
+@keyframes ornamentFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(10deg);
+    }
+}
+
+/* Main Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+    min-height: calc(100vh - 300px);
+    /* Space for footer */
+}
+
+/* Section Title */
+.section-title {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.5rem;
+    color: var(--accent-gold);
+    margin: 3rem 0 4rem;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.section-title:before,
+.section-title:after {
+    content: "🎄";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.section-title:before {
+    left: 20%;
+}
+
+.section-title:after {
+    right: 20%;
+}
+
+/* Modern Character Cards */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 6rem;
+}
+
+.character-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.character-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border-color: var(--accent-gold);
+}
+
+.character-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+            var(--accent-red),
+            var(--accent-gold),
+            var(--light-green));
+    z-index: 1;
+}
+
+.character-icon {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.character-card:hover .character-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.character-name {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.character-name:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 20%;
+    width: 60%;
+    height: 3px;
+    background: var(--accent-red);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.character-card:hover .character-name:after {
+    width: 80%;
+}
+
+.character-description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--accent-silver);
+    margin-top: 1rem;
+    flex-grow: 1;
+}
+
+/* Other Sections */
+
+/* Polaroid Photo Sections */
+.photos-section {
+    margin: 4rem 0 6rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h3:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--accent-red), 
+        transparent);
+    border-radius: 2px;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--accent-silver);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.polaroid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.polaroid-card {
+    background: white;
+    padding: 1.5rem 1.5rem 4rem;
+    border-radius: 4px;
+    position: relative;
+    transform: rotate(var(--rotate-angle, 0deg));
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.polaroid-card:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.polaroid-card:nth-child(odd) {
+    --rotate-angle: -2deg;
+}
+
+.polaroid-card:nth-child(even) {
+    --rotate-angle: 2deg;
+}
+
+.polaroid-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    transition: all 0.4s ease;
+    filter: sepia(0.2) contrast(1.1);
+}
+
+.polaroid-card:hover .polaroid-image {
+    filter: sepia(0) contrast(1.2) brightness(1.1);
+    transform: scale(1.02);
+}
+
+.polaroid-date {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 800;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.polaroid-card:hover .polaroid-date {
+    color: var(--accent-red);
+    transform: scale(1.1);
+}
+
+.polaroid-ornament {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.polaroid-card:hover .polaroid-ornament {
+    opacity: 1;
+    animation: ornamentFloat 2s ease-in-out infinite;
+}
+
+.ornament-tl {
+    top: -10px;
+    left: -10px;
+}
+
+.ornament-tr {
+    top: -10px;
+    right: -10px;
+    animation-delay: 0.5s !important;
+}
+
+.ornament-bl {
+    bottom: 30px;
+    left: -10px;
+    animation-delay: 1s !important;
+}
+
+.ornament-br {
+    bottom: 30px;
+    right: -10px;
+    animation-delay: 1.5s !important;
+}
+
+/* Photo counter */
+.photo-counter {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: var(--accent-red);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(214, 40, 40, 0.3);
+    transition: all 0.3s ease;
+}
+
+.polaroid-card:hover .photo-counter {
+    transform: scale(1.2) rotate(15deg);
+    box-shadow: 0 6px 15px rgba(214, 40, 40, 0.5);
+}
+
+
+
+/* Footer */
+.footer {
+    background: linear-gradient(to bottom,
+            rgba(10, 30, 10, 0.95),
+            rgba(5, 20, 5, 0.98));
+    padding: 4rem 5% 2rem;
+    position: relative;
+    z-index: 10;
+    border-top: 3px solid var(--accent-red);
+    margin-top: 3rem;
+    backdrop-filter: blur(10px);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section {
+    padding: 1rem;
+}
+
+.footer-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-title:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-red);
+    border-radius: 2px;
+}
+
+.footer-text {
+    color: var(--accent-silver);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--accent-silver);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.footer-links a:hover {
+    color: var(--accent-gold);
+    transform: translateX(10px);
+}
+
+.footer-links i {
+    color: var(--accent-red);
+    font-size: 1rem;
+}
+
+/* Countdown Section */
+.countdown-section {
+    text-align: center;
+    background: rgba(20, 40, 20, 0.6);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-title {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.countdown-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    color: var(--accent-silver);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.countdown-message {
+    font-size: 1.2rem;
+    color: var(--accent-silver);
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.countdown-message i {
+    color: var(--accent-red);
+    margin: 0 0.5rem;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.social-icon:hover {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    transform: translateY(-5px);
+    border-color: var(--accent-red);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--accent-silver);
+    font-size: 1rem;
+}
+
+.footer-signature {
+    font-size: 1.1rem;
+    color: var(--accent-gold);
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.footer-signature span {
+    color: var(--accent-red);
+}
+
+/* Christmas Footer Ornaments */
+.footer-ornament {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.orn-1 {
+    top: -15px;
+    left: 10%;
+    background: radial-gradient(circle at 30% 30%, #ff3333, #990000);
+}
+
+.orn-2 {
+    top: -15px;
+    right: 15%;
+    background: radial-gradient(circle at 30% 30%, #33cc33, #006600);
+}
+
+.orn-3 {
+    bottom: 20px;
+    left: 5%;
+    background: radial-gradient(circle at 30% 30%, #ffff00, #996600);
+}
+
+.orn-4 {
+    bottom: 20px;
+    right: 8%;
+    background: radial-gradient(circle at 30% 30%, #ff66ff, #660066);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .polaroid-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        padding: 1rem;
+    }
+    
+    .section-header h3 {
+        font-size: 2rem;
+    }
+    
+    .polaroid-date {
+        font-size: 1.5rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .characters-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .section-title:before {
+        left: 15%;
+    }
+
+    .section-title:after {
+        right: 15%;
+    }
+
+    .countdown-container {
+        gap: 1rem;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+    }
+
+    .image-title {
+        font-size: 3.5rem;
+    }
+
+    .image-subtitle {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .logo-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .section-title {
+        font-size: 2.8rem;
+    }
+
+    .tree-left,
+    .tree-right {
+        opacity: 0.5;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .image-title {
+        font-size: 3rem;
+    }
+
+    .image-subtitle {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .logo-text h1 {
+        font-size: 2.4rem;
+    }
+
+    .section-title {
+        font-size: 2.4rem;
+    }
+
+    .section-title:before,
+    .section-title:after {
+        display: none;
+    }
+
+    .characters-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .character-card {
+        padding: 2rem;
+        min-height: 380px;
+    }
+
+    .tree-left,
+    .tree-right {
+        display: none;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .countdown-container {
+        gap: 0.8rem;
+    }
+
+    .countdown-item {
+        min-width: 60px;
+    }
+
+    .countdown-value {
+        font-size: 2rem;
+    }
+
+    .image-section {
+        height: 60vh;
+    }
+
+    .image-title {
+        font-size: 2.5rem;
+    }
+
+    .image-subtitle {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+
+    .image-ornaments {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-text h1 {
+        font-size: 2rem;
+    }
+
+    .logo-text p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .characters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .character-name {
+        font-size: 1.8rem;
+    }
+
+    .character-description {
+        font-size: 1.1rem;
+    }
+
+    .countdown-container {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+    }
+
+    .image-section {
+        height: 50vh;
+    }
+
+    .image-title {
+        font-size: 2rem;
+    }
+
+    .image-subtitle {
+        font-size: 1rem;
+    }
+
+    .image-ornaments {
+        gap: 1rem;
+    }
+
+    .image-ornament {
+        font-size: 1.5rem;
+    }
+}
+
+/* Sparkle effect for balls */
+.christmas-ball {
+    animation: floatBall 6s ease-in-out infinite,
+        sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+}
